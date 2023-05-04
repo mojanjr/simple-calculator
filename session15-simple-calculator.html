@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>simple calculator</title>
+        <style>
+             .container {
+                width: 700px;
+                margin: 0 auto;
+                padding: 40px;
+                background: #030642;
+            }
+            .holder {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .container span {
+                background: #fff;
+                border: 1px solid #030642;
+                padding: 0 12px;
+            }
+            .container button#calculate {
+                color: #fff;
+                background: #5d64da;
+                font-size: 18px;
+                margin-top: 30px;
+            }
+            .container p#result {
+                color: #fff;
+                padding: 20px;
+                border: 2px solid #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="holder">
+                <input id="input1" type="text"/>
+                <select id="operator">
+                    <option id="addition" value="+">+</option>
+                    <option id="subtraction" value="-">-</option>
+                    <option id="multiplication" value="*">*</option>
+                    <option id="division" value="/">/</option>
+                    <option id="exponentiation" value="**">**</option>
+                    <option id="modulus" value="%">%</option>
+                </select>
+                <input id="input2" type="text"/>
+                <span>=</span>
+                <p id="result"></p>
+            </div>
+            <button id="calculate">حساب کن</button>
+        </div>
+        
+        <script>
+            var operator = document.getElementById("operator");
+            var firstInput = document.getElementById("input1");
+            var secondInput = document.getElementById("input2");
+            var result = document.getElementById("result");            
+            document.getElementById("calculate").addEventListener("click", calc);
+            function calc() { 
+                if(operator.value === "+") {
+                    result.innerHTML = parseFloat(firstInput.value) + parseFloat(secondInput.value)
+                } else if(operator.value === "-") {
+                    result.innerHTML = parseFloat(firstInput.value) - parseFloat(secondInput.value)
+                } else if(operator.value === "*") {
+                    result.innerHTML = parseFloat(firstInput.value) * parseFloat(secondInput.value)
+                } else if(operator.value === "/") {
+                    result.innerHTML = parseFloat(firstInput.value) / parseFloat(secondInput.value)
+                } else if(operator.value === "**") {
+                    result.innerHTML = parseFloat(firstInput.value) ** parseFloat(secondInput.value)
+                } else if(operator.value === "%") {
+                    result.innerHTML = parseFloat(firstInput.value) % parseFloat(secondInput.value)
+                }
+                firstInput.value = "";
+                secondInput.value = "";
+            }
+        </script>
+    </body>
+</html>
